@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Введение &#8212; Документация livedigital </title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Авторизация" href="auth.html" />
+    <link rel="prev" title="Руководство по быстрому старту" href="index.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="ru">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image">
+    <img src="_static/logo.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+    <p class="title logo__title"><h1>Руководство по быстрому старту</h2></p>
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items">
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Введение</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Пространства и комнаты для проведения трансляций</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Доступ пользователей</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api">Работа с API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Встраивание на сайт клиента</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="auth.html">Авторизация</a></li>
+<li class="toctree-l1"><a class="reference internal" href="space_room_create.html">Создание space и room</a></li>
+<li class="toctree-l1"><a class="reference internal" href="space_room_config.html">Конфигурирование настроек space, room</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Управление пользователями</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iframe.html">Добавление комнаты на сайт c помощью iFrame</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   Пространства и комнаты для проведения трансляций
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   Доступ пользователей
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#api">
+   Работа с API
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   Встраивание на сайт клиента
+  </a>
+ </li>
+</ul>
+
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <div class="section" id="id1">
+<h1>Введение<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<p>Для начала работы с API необходимо обратиться к разработчику и получить свой идентификатор <code class="docutils literal notranslate"><span class="pre">clientId</span></code> и сформировать токен доступа. С помощью этого токена происходит авторизация при выполнении запросов к API.</p>
+<div class="section" id="id2">
+<h2>Пространства и комнаты для проведения трансляций<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>В рамках работы с API livedigital используются понятия пространства (<code class="docutils literal notranslate"><span class="pre">space</span></code>) и комнаты (<code class="docutils literal notranslate"><span class="pre">room</span></code>). Каждый клиент работает в рамках своего пространства, в котором создает комнаты для проведения вебинаров и видеоконференций. Пространства и комнаты могут быть публичные и непубличные.</p>
+</div>
+<div class="section" id="id3">
+<h2>Доступ пользователей<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>Доступ к публичным пространствам имеют все пользователи. Доступ к непубличным пространствам имеют только создатель\модераторы. Для того, чтобы предоставить доступ остальным пользователям используются специальные токены. Токены формируются с помощью метода API. Чтобы пригласить пользователя в пространство\комнату ему передается токен пользователя в виде ссылки, перейдя по которой пользователь активирует свой доступ. Токен можно использовать только один раз, после активации токен становится невалидным.</p>
+</div>
+<div class="section" id="api">
+<h2>Работа с API<a class="headerlink" href="#api" title="Permalink to this heading">#</a></h2>
+<p>API предоставляет набор методов, которые представляют собой HTTP-запросы. Выполняя запрос с определенными параметрами, можно создать новое пространство или комнату, сформировать токен пользователя для доступа в комнату при проведении трансляции и т.д. Поддерживается выполнение только авторизованных запросов. Для этого в заголовке запроса передается специальный токен доступа. Такой токен является уникальным для каждого клиента или пользователя. При этом для выполнения одних запросов нужно авторизоваться как клиент, а для выполнения других как пользователь.</p>
+<p><strong>Примечание!</strong> В данном руководстве нет полного описания методов API, которые используются для выполнения операций. Для каждого метода дана ссылка на <em>Swagger</em>, где приведена полная спецификация методов. Для доступа к странице <em>Swagger</em> необходимо указать логин и пароль, которые можно получить, обратившись к разработчикам livedigital.</p>
+</div>
+<div class="section" id="id4">
+<h2>Встраивание на сайт клиента<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p>После того, как с помощью API в системе созданы соответствующие объекты данных для пространства, комнат, пользователей, необходимо встроить функционал для отображения видеоконференции на страницу сайта. Для этого используется технология <code class="docutils literal notranslate"><span class="pre">iFrame</span></code>. Объект iFrame добавляется в HTML-код страницы. Такой объект содержит атрибуты, в которых передаются идентификаторы пространства, пользователей, которые имеют доступ, параметры внешнего отображения на странице, разрешения - например, для использования камеры, микрофона и т.д.</p>
+</div>
+</div>
+
+
+              </article>
+              
+
+              
+              <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="index.html" title="назад страница">
+      <i class="fas fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">назад</p>
+          <p class="prev-next-title">Руководство по быстрому старту</p>
+      </div>
+  </a>
+  <a class='right-next' id="next-link" href="auth.html" title="вперёд страница">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">вперёд</p>
+      <p class="prev-next-title">Авторизация</p>
+  </div>
+  <i class="fas fa-angle-right"></i>
+  </a>
+</div>
+              </footer>
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2022, livedigital.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Создано с помощью <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

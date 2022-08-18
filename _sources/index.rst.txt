@@ -1,0 +1,20 @@
+.. livedigital documentation master file, created by
+   sphinx-quickstart on Sat Jul  9 15:38:30 2022.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Руководство по быстрому старту
+============================================
+
+Документ описывает порядок действий для добавления на сайт видеоконференции livegigital с помощью предоставляемого API. Методы API позволяют создать пространство и комнаты для видеоконференций, настроить параметры их работы, добавить пользователей и управлять правами доступа для них к созданным комнатам.
+
+.. toctree::
+   :maxdepth: 2
+
+   intro.md
+   auth.md
+   space_room_create.md
+   space_room_config.md
+   users.md
+   iframe.md
+

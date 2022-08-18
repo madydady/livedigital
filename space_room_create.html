@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Создание space и room &#8212; Документация livedigital </title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Конфигурирование настроек space, room" href="space_room_config.html" />
+    <link rel="prev" title="Авторизация" href="auth.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="ru">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image">
+    <img src="_static/logo.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+    <p class="title logo__title"><h1>Руководство по быстрому старту</h2></p>
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items">
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Введение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auth.html">Авторизация</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Создание space и room</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Создание пространства</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#room-create">Создание комнат</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="space_room_config.html">Конфигурирование настроек space, room</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Управление пользователями</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iframe.html">Добавление комнаты на сайт c помощью iFrame</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Создание пространства
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#room-create">
+   Создание комнат
+  </a>
+ </li>
+</ul>
+
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <div class="section" id="space-room">
+<h1>Создание space и room<a class="headerlink" href="#space-room" title="Permalink to this heading">#</a></h1>
+<p>Для каждого клиента - организатора трансляций создается отдельное пространство для управления всеми трансляциями. В каждом таком пространстве создаются комнаты для каждой отдельной трансляции. Для создания каждого такого объекта: пространства (space), комнаты (room) и пользователя (user) используются свои методы API.</p>
+<p><strong>Важно!</strong> При создании пространства и комнат для авторизации используется <a class="reference internal" href="auth.html#user-token"><span class="std std-ref">токен пользователя</span></a>.</p>
+<div class="section" id="id1">
+<h2>Создание пространства<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>Для создания нового пространства необходимо выполнить запрос <code class="docutils literal notranslate"><span class="pre">createSpaces</span></code>. В результате выполнения будет создано новое пространство и вернется его идентификатор. В запросе необходимо передать параметр <code class="docutils literal notranslate"><span class="pre">name</span></code> - имя создаваемого пространства. Следует указать значение <code class="docutils literal notranslate"><span class="pre">isPublic:</span> <span class="pre">true</span></code> - для создания публичного пространства. Дополнительно можно указать описание - параметр <code class="docutils literal notranslate"><span class="pre">description</span></code> и ссылку на изображение с логотипом - параметр <code class="docutils literal notranslate"><span class="pre">logo</span></code>. Полная спецификация метода приведена <a class="reference external" href="https://moodhood-api.livedigital.space/doc/#/Spaces/createSpace">в Swagger</a>.</p>
+<p><strong>Примечание!</strong> В случае указания параметра <code class="docutils literal notranslate"><span class="pre">isPublic:false</span></code> доступ к пространству имеет только создатель\модератор</p>
+<p>Пример выполнения запроса <code class="docutils literal notranslate"><span class="pre">createSpaces</span></code></p>
+<p><strong>POST  https://moodhood-api.livedigital.space/v1/spaces</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;isPublic&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Some test space&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Space where my team will have all future calls&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;logo&quot;</span><span class="p">:</span> <span class="s2">&quot;https://server.com/images/png-clipart-myspace-logo.png&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Пример кода для cURL</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">location</span> <span class="o">--</span><span class="n">request</span> <span class="n">POST</span> <span class="s1">&#39;https://moodhood-api.livedigital.space/v1/spaces&#39;</span> \
+<span class="o">--</span><span class="n">header</span> <span class="s1">&#39;Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MmFiNWE4NGIwY2U2ZWUzMWIwOTk3YjMiLCJhdWQiOiJ1c2VyIiwidHlwZSI6ImFjY2Vzc1Rva2VuIiwiY0lkIjoiNjJhMDlmYzcwMmY4NmNlMzdhOTM4NmYxIiwianRpIjoiZXZ5ZlJWRWsyRGozVFFsYzF5UnBLIiwic2duIjoiYjgxMTBmOGZiNiIsImlhdCI6MTY1NTc1ODAwMiwiZXhwIjoxNjU2MzYyODAyfQ.hzXW-dHJD0TUtLY22yefmZogvSanEbb70zRo4Kku98A&#39;</span> \
+<span class="o">--</span><span class="n">header</span> <span class="s1">&#39;Content-Type: application/json&#39;</span> \
+<span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="n">raw</span> <span class="s1">&#39;{</span>
+ <span class="s2">&quot;isPublic&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+ <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Some test space&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Space where my team will have all future calls&quot;</span>
+<span class="p">}</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+<p>В результате успешного выполнения запроса будет создано новое пространство и вернется его идентификатор для дальнейшего использования. Например, для добавления комнат в пространство.</p>
+<p>Результат:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;60d55c0eb9ef88ab17b0aabb&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="room-create">
+<span id="id2"></span><h2>Создание комнат<a class="headerlink" href="#room-create" title="Permalink to this heading">#</a></h2>
+<p>Для создания в пространстве комнат используется метод <code class="docutils literal notranslate"><span class="pre">createRooms</span></code>. В строке запроса как часть URL-адреса передается ID пространства, в которое будет добавлена комната - <code class="docutils literal notranslate"><span class="pre">{spaceId}</span></code> - это значение, возвращаемое методом <code class="docutils literal notranslate"><span class="pre">createSpaces</span></code> при создании пространства (см. описание выше). В теле запроса обязательно указывается имя создаваемой комнаты - параметр <code class="docutils literal notranslate"><span class="pre">name</span></code>. Дополнительно можно задать тип комнаты и др. параметры (см <a class="reference internal" href="space_room_config.html#room-config"><span class="std std-ref">Настройка комнаты</span></a>). Полная спецификация метода приведена <a class="reference external" href="https://moodhood-api.livedigital.space/doc/#/SpaceRooms/createRoom">в Swagger</a>.</p>
+<p>В результате выполнения метода в пространстве с заданным идентификатором создается новая комната определенного типа.</p>
+<p>Пример выполнения запроса createRooms</p>
+<p><strong>POST  https://moodhood-api.livedigital.space/v1/spaces/60d55c0eb9ef88ab17b0aabb/rooms</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;isPublic&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;isScreensharingAllowed&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;isChatAllowed&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lesson&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Пример кода для cURL</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">location</span> <span class="o">--</span><span class="n">request</span> <span class="n">POST</span> <span class="s1">&#39;https://moodhood-api.livedigital.space/v1/spaces/62b0e24a81ad6df4bb583c58/rooms&#39;</span> \
+<span class="o">--</span><span class="n">header</span> <span class="s1">&#39;Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MmFiNWE4NGIwY2U2ZWUzMWIwOTk3YjMiLCJhdWQiOiJ1c2VyIiwidHlwZSI6ImFjY2Vzc1Rva2VuIiwiY0lkIjoiNjJhMDlmYzcwMmY4NmNlMzdhOTM4NmYxIiwianRpIjoiZXZ5ZlJWRWsyRGozVFFsYzF5UnBLIiwic2duIjoiYjgxMTBmOGZiNiIsImlhdCI6MTY1NTc1ODAwMiwiZXhwIjoxNjU2MzYyODAyfQ.hzXW-dHJD0TUtLY22yefmZogvSanEbb70zRo4Kku98A&#39;</span> \
+<span class="o">--</span><span class="n">header</span> <span class="s1">&#39;Content-Type: application/json&#39;</span> \
+<span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="n">raw</span> <span class="s1">&#39;{</span>
+ <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;isPublic&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+ <span class="s2">&quot;isScreensharingAllowed&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+ <span class="s2">&quot;isChatAllowed&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+ <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lesson&quot;</span>
+<span class="p">}</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+<p>В результате выполнения запроса создается новая комната в заданном пространстве и возвращается JSON с параметрами комнаты:</p>
+<ul class="simple">
+<li><p>id - полный идентификатор комнаты,</p></li>
+<li><p>alias - короткая ссылка на комнату для удобства использования в запросах,</p></li>
+<li><p>channelId - служебная информация.</p></li>
+</ul>
+<p>Результат:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+	<span class="nt">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;EGBYWoMZJe&quot;</span><span class="p">,</span>
+	<span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;62b0e25e3dc082dc7502d273&quot;</span><span class="p">,</span>
+	<span class="nt">&quot;channelId&quot;</span><span class="p">:</span> <span class="s2">&quot;62b0e25e7f20b37190ff5e0a&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+              </article>
+              
+
+              
+              <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="auth.html" title="назад страница">
+      <i class="fas fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">назад</p>
+          <p class="prev-next-title">Авторизация</p>
+      </div>
+  </a>
+  <a class='right-next' id="next-link" href="space_room_config.html" title="вперёд страница">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">вперёд</p>
+      <p class="prev-next-title">Конфигурирование настроек space, room</p>
+  </div>
+  <i class="fas fa-angle-right"></i>
+  </a>
+</div>
+              </footer>
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2022, livedigital.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Создано с помощью <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,126 @@
+# Авторизация
+
+Для работы с API LiveDigital необходима авторизация. Авторизация осуществляется с помощью специального токена доступа `access_token`. Предусмотрены разные типы допуска и разные токены для выполнения различных операций. Сначала необходимо сформировать клиентский токен, который позволяет просматривать публичные сущности, например, комнаты, а также создать пользовательский токен, который можно использовать для создания новых сущностей.
+
+Прежде всего необходимо запросить у разработчика свой идентификатор клиента `clientID` и секретный ключ `client_secret`, на основе которых формируется клиентский токен.
+
+Пример `clientID`, `client_secret`, полученных от разработчика:
+
+```{code-block}
+{
+ “clientId” : “john-smith-livedigital”,
+ “clientSecret” : “VTytkTR7ZHH5nLhoWCLjymrUJjKBzfs4”
+}
+
+```
+
+Используя полученный идентификатор клиента и секрет необходимо создать клиентский токен.
+
+(client-token)=
+
+## Создание клиентского токена
+
+Для получения клиентского токена следует выполнить запрос `getAccessToken`, передав в параметрах запроса свои `clientId` и `client_secret`, полученные ранее. Также в теле запроса передается параметр `grant_type` со значением `client_credentials`. Полная спецификация метода приведена [в Swagger](https://moodhood-api.livedigital.space/doc/#/Auth/getAccessToken).
+
+Пример выполнения запроса `getAccessToken`
+
+**POST https://moodhood-api.livedigital.space/v1/auth/token**
+
+```{code-block} json
+{
+ "client_id": "john-smith-livedigital",
+ "client_secret": "VTytkTR7ZHH5nLhoWCLjymrUJjKBzfs4",
+ "grant_type": "client_credentials"
+}
+```
+
+Результат:
+
+```{code-block} json
+{
+  "token_type": "Bearer",
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGM4YzZmMGE2MGY1Yzc0OGQxZWYyN2UiLCJhdWQiOiJ1c2VyIiwidHlwZSI6ImFjY2Vzc1Rva2VuIiwiY0lkIjoiNjBjOGM2ZjBhNjBmNWM3NDhkMWVmMjdlIiwianRpIjoiNzlhZjgwMDM4YTdmNSIsInNnbiI6IjA5OGY2YmNkNDYiLCJpYXQiOjE2MjM4NDU0MTIsImV4cCI6MTYyNDQ1MDIxMn0.jfzFAs_XM",
+  "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGM4YzZmMGE2MGY1Yzc0OGQxZWYyN2UiLCJhdWQiOiJ1c2VyIiwidHlwZSI6InJlZnJlc2hUb2tlbiIsImNJZCI6IjYwYzhjNmYwYTYwZjVjNzQ4ZDFlZjI3ZSIsImp0aSI6IjU0ZjM4NDQxZmU1MmQiLCJzZ24iOiIwOThmNmJjZDQ2IiwiaWF0IjoxNjIzODQ1NDEyLCJleHAiOjE2MjY0Mzc0MTJ9.Gj8fLaDAX4"
+}
+```
+
+В теле ответа возвращается параметр `access_token`, который содержит значение клиентского токена.
+
+## Использование токена
+
+Токен используется при выполнении запросов. Для этого необходимо в заголовки запроса добавить заголовок следующего вида:
+
+```
+Authorization: Bearer <access_token>
+```
+
+Здесь `Bearer` - это тип используемой авторизации.
+
+Пример кода для cURL с передачей токена в заголовке Authorization:
+
+```{code-block}
+curl --location --request POST 'https://moodhood-api.livedigital.space/v1/auth/token' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MmFiNWE4NGIwY2U2ZWUzMWIwOTk3YjMiLCJhdWQiOiJ1c2VyIiwidHlwZSI6ImFjY2Vzc1Rva2VuIiwiY0lkIjoiNjJhMDlmYzcwMmY4NmNlMzdhOTM4NmYxIiwianRpIjoiSzZEX1ZNQWRrc25CQnpjaTJnRlFBIiwic2duIjoiYjgxMTBmOGZiNiIsImlhdCI6MTY1NTc0MTEyOSwiZXhwIjoxNjU2MzQ1OTI5fQ.Qy-zwBGwjyWzPF8uXYtla9IOvCfOCeQ9uzCaUo8Q7pM' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+"client_id": "john-smith-livedigital",
+"client_secret": "VTytkTR7ZHH5nLhoWCLjymrUJjKBzfs4",
+"grant_type": "password",
+"username": "test_user@test.test",
+"password": "123456"
+}'
+
+```
+
+(user-token)=
+
+## Создание токена пользователя
+
+Для получения токена пользователя следует выполнить запрос `getAccessToken`, авторизовавшись с помощью клиентского токена и передав в параметрах запроса свои `clientId` и `client_secret`, полученные ранее.
+Также в теле запроса передаются параметры: 
+* **grant_type** - тип доступа (следует указать `password`)
+* **username** - имя пользователя
+* **password** - пароль пользователя
+
+Полная спецификация метода приведена [в Swagger](https://moodhood-api.livedigital.space/doc/#/Auth/getAccessToken).
+
+Пример выполнения запроса `getAccessToken`
+
+**POST  https://moodhood-api.livedigital.space/v1/auth/token**
+ 
+```{code-block} json
+{
+ "client_id": "john-smith-livedigital",
+ "client_secret": "VTytkTR7ZHH5nLhoWCLjymrUJjKBzfs4",
+ "grant_type": "password",
+ "username": "test_user@test.test",
+ "password": "123456"
+}
+```
+
+Пример кода для cURL с передачей клиентского токена в заголовке Authorization:
+ 
+```{code-block}
+curl --location --request POST 'https://moodhood-api.livedigital.space/v1/auth/token' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MmFiNWE4NGIwY2U2ZWUzMWIwOTk3YjMiLCJhdWQiOiJ1c2VyIiwidHlwZSI6ImFjY2Vzc1Rva2VuIiwiY0lkIjoiNjJhMDlmYzcwMmY4NmNlMzdhOTM4NmYxIiwianRpIjoiSzZEX1ZNQWRrc25CQnpjaTJnRlFBIiwic2duIjoiYjgxMTBmOGZiNiIsImlhdCI6MTY1NTc0MTEyOSwiZXhwIjoxNjU2MzQ1OTI5fQ.Qy-zwBGwjyWzPF8uXYtla9IOvCfOCeQ9uzCaUo8Q7pM' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+"client_id": "john-smith-livedigital",
+"client_secret": "VTytkTR7ZHH5nLhoWCLjymrUJjKBzfs4",
+"grant_type": "password",
+"username": "test_user@test.test",
+"password": "123456"
+}'
+```
+
+Результат:
+
+```{code-block} json
+{
+   "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MmEwOWZjNzAyZjg2Y2UzN2E5Mzg2ZjEiLCJhdWQiOiJjbGllbnQiLCJ0eXBlIjoiYWNjZXNzVG9rZW4iLCJjSWQiOiI2MmEwOWZjNzAyZjg2Y2UzN2E5Mzg2ZjEiLCJqdGkiOiI1ZGxDZ0pxRzZ1dFFycjNqSTFjSmMiLCJpYXQiOjE2NTUzMTYwNjgsImV4cCI6MTY1NTkyMDg2OH0.5vTOaqS77Yl-4cYT1WM5DdKbo8-I__bxB2DX5kyFaTA",
+   "token_type": "Bearer",
+   "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MmEwOWZjNzAyZjg2Y2UzN2E5Mzg2ZjEiLCJhdWQiOiJjbGllbnQiLCJ0eXBlIjoicmVmcmVzaFRva2VuIiwiY0lkIjoiNjJhMDlmYzcwMmY4NmNlMzdhOTM4NmYxIiwianRpIjoiYXNhZnJfOUJpM1diUnZlTXFYVFhUIiwiaWF0IjoxNjU1MzE2MDY4LCJleHAiOjE2NTcxMzA0Njh9.tjZrOlt35FliWSNPlWX-piFfIyiYAym72h2Yk-eAsxQ"
+}
+```
+
+В результате выполнения запроса возвращается JSON, содержащий значение `access_token` - это и есть токен пользователя для авторизации. Также метод возвращает значение `refresh_token` - это токен, который может использоваться для фоновой авторизации пользователя (подробнее см. [Добавление комнаты на сайт c помощью iFrame](iframe.md)).

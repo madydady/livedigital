@@ -1,0 +1,155 @@
+# Управление пользователями
+
+Прежде чем приглашать пользователя присоединиться к трансляции, управлять его правами доступа к комнатам и т.д. необходимо создать учетную запись пользователя в системе.
+
+## Создание пользователя
+
+Для создания в системе нового пользователя используется метод `createUser`. В теле запроса передаются данные пользователя - адрес email, имя пользователя в системе, его пароль, дополнительно можно указать телефон. В результате выполнения метода будет зарегистрирован новый пользователь с указанными данными. Полная спецификация метода приведена [в Swagger](https://moodhood-api.livedigital.space/doc/#/Users/createNewUser).
+
+**Важно!** При создании нового пользователя используется [токен клиента](client-token)
+
+Пример выполнения запроса `createUser`
+
+**POST  https://moodhood-api.livedigital.space/v1/users**
+
+```{code-block} json 
+{
+  "email": "some-email@example.com",
+  "password": "gmi28abc",
+  "username": "Some Username Here",
+  "phone": "+79671234567",
+  "captchaToken": "string"
+}
+```
+
+Пример кода для cURL
+
+```{code-block}
+curl --location --request POST 'https://moodhood-api.livedigital.space/v1/users' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MmFiNWE4NGIwY2U2ZWUzMWIwOTk3YjMiLCJhdWQiOiJ1c2VyIiwidHlwZSI6ImFjY2Vzc1Rva2VuIiwiY0lkIjoiNjJhMDlmYzcwMmY4NmNlMzdhOTM4NmYxIiwianRpIjoiSzZEX1ZNQWRrc25CQnpjaTJnRlFBIiwic2duIjoiYjgxMTBmOGZiNiIsImlhdCI6MTY1NTc0MTEyOSwiZXhwIjoxNjU2MzQ1OTI5fQ.Qy-zwBGwjyWzPF8uXYtla9IOvCfOCeQ9uzCaUo8Q7pM' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+ "email": "some-email@example.com",
+ "password": "gmi28abc",
+ "username": "Some Username Here",
+ "phone": "+79671234567"
+}'
+```
+
+В результате выполнения запроса будет зарегистрирован новый пользователь с указанными данными и вернется его идентификатор в системе.
+
+Результат:
+
+```{code-block} json
+{
+  "id": "60cb1fd41f46ac12ff0eec79"
+}
+```
+
+## Управление доступом пользователей
+
+### Создание инвайта для доступа к пространству
+
+Чтобы пользователь мог присоединиться к трансляции, ему необходимо предоставить доступ к пространству и комнате, где будет проходить трансляция.
+
+**Примечание**. Для публичных пространств и комнат доступ по умолчанию есть у всех пользователей.  
+
+Для предоставления доступа к пространству используется метод `createInvite`. В строке запроса передается идентификатор пространства, а в теле запроса указывается параметр `role`, который может иметь два значения:
+* **role_space_moderator** - модератор,
+* **role_space_user** - пользователь.
+
+Полная спецификация метода приведена [в Swagger](https://moodhood-api.livedigital.space/doc/#/SpaceInvites/createInvite).
+
+В результате выполнения запроса возвращается идентификатор, по которому далее следует активировать инвайт (см. ниже). 
+
+Пример выполнения запроса `createInvite`
+
+**POST  https://moodhood-api.livedigital.space/v1/spaces/60d55c0eb9ef88ab17b0aabb/invites**
+
+```{code-block} json 
+{
+  "role": "role_space_moderator"
+}
+```
+
+Пример кода для cURL
+
+```{code-block}
+curl --location --request POST 'https://moodhood-api.livedigital.space/v1/spaces/62bcc725721aeb718445daf7/invites' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MmFiNWE4NGIwY2U2ZWUzMWIwOTk3YjMiLCJhdWQiOiJ1c2VyIiwidHlwZSI6ImFjY2Vzc1Rva2VuIiwiY0lkIjoiNjJhMDlmYzcwMmY4NmNlMzdhOTM4NmYxIiwianRpIjoic2YxOHFtdkV4Ymdzc2pNV0hRNWVyIiwic2duIjoiYjgxMTBmOGZiNiIsImlhdCI6MTY1NjUzODg2NCwiZXhwIjoxNjU3MTQzNjY0fQ.bNopnFmGc7bEX8Jy8GkcojCA1SGy1wm7xIhFbO9kzVY' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MmFiNWE4NGIwY2U2ZWUzMWIwOTk3YjMiLCJhdWQiOiJ1c2VyIiwidHlwZSI6ImFjY2Vzc1Rva2VuIiwiY0lkIjoiNjJhMDlmYzcwMmY4NmNlMzdhOTM4NmYxIiwianRpIjoic2YxOHFtdkV4Ymdzc2pNV0hRNWVyIiwic2duIjoiYjgxMTBmOGZiNiIsImlhdCI6MTY1NjUzODg2NCwiZXhwIjoxNjU3MTQzNjY0fQ.bNopnFmGc7bEX8Jy8GkcojCA1SGy1wm7xIhFbO9kzVY; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MmFiNWE4NGIwY2U2ZWUzMWIwOTk3YjMiLCJhdWQiOiJ1c2VyIiwidHlwZSI6InJlZnJlc2hUb2tlbiIsImNJZCI6IjYyYTA5ZmM3MDJmODZjZTM3YTkzODZmMSIsImp0aSI6ImRoUXhxM2ZyV1V0QktOZUhsd1o3cCIsInNnbiI6ImI4MTEwZjhmYjYiLCJpYXQiOjE2NTY1Mzg4NjQsImV4cCI6MTY1ODM1MzI2NH0.INhr4aj0cY-l-CbyFL0KkV4nz-2-vmRMpdVB2MWTg2o; trClId=LhAdDHgbA5gqFpklo8rw' \
+--data-raw '{
+ "role": "role_space_moderator"
+}'
+```
+
+Результат:
+
+```
+{
+   "id": "62bccb101f211e947a00da47"
+}
+```
+
+Сервер возвращает идентификатор инвайта для его активации.
+
+### Активация инвайта
+
+Созданный инвайт для пространства необходимо активировать. Для этого следует выполнить метод `activateInvite`, авторизовавшись с помощью `access_token` того пользователя, которому должен быть предоставлен доступ. Методу в качестве параметров в строке запроса передаются идентификатор пространства и идентификатор инвайта (см. предыдущий раздел). Тело запроса пустое. Полная спецификация метода приведена [в Swagger](https://moodhood-api.livedigital.space/doc/#/SpaceInvites/activateInvite).
+
+Пример выполнения запроса `activateInvite`
+
+**POST  https://moodhood-api.livedigital.space/v1/spaces/62bcc725721aeb718445daf7/invites/62bccb101f211e947a00da47/activate**
+
+где *62bcc725721aeb718445daf7* - идентификатор пространства, *62bccb101f211e947a00da47* - идентификтаор инвайта.
+ 
+Пример кода для cURL
+
+```{code-block}
+curl --location --request POST 'https://moodhood-api.livedigital.space/v1/spaces/62bcc725721aeb718445daf7/invites/62bccb101f211e947a00da47/activate' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MmFiNWE4NGIwY2U2ZWUzMWIwOTk3YjMiLCJhdWQiOiJ1c2VyIiwidHlwZSI6ImFjY2Vzc1Rva2VuIiwiY0lkIjoiNjJhMDlmYzcwMmY4NmNlMzdhOTM4NmYxIiwianRpIjoic2YxOHFtdkV4Ymdzc2pNV0hRNWVyIiwic2duIjoiYjgxMTBmOGZiNiIsImlhdCI6MTY1NjUzODg2NCwiZXhwIjoxNjU3MTQzNjY0fQ.bNopnFmGc7bEX8Jy8GkcojCA1SGy1wm7xIhFbO9kzVY' \
+--header 'Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MmFiNWE4NGIwY2U2ZWUzMWIwOTk3YjMiLCJhdWQiOiJ1c2VyIiwidHlwZSI6ImFjY2Vzc1Rva2VuIiwiY0lkIjoiNjJhMDlmYzcwMmY4NmNlMzdhOTM4NmYxIiwianRpIjoic2YxOHFtdkV4Ymdzc2pNV0hRNWVyIiwic2duIjoiYjgxMTBmOGZiNiIsImlhdCI6MTY1NjUzODg2NCwiZXhwIjoxNjU3MTQzNjY0fQ.bNopnFmGc7bEX8Jy8GkcojCA1SGy1wm7xIhFbO9kzVY; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MmFiNWE4NGIwY2U2ZWUzMWIwOTk3YjMiLCJhdWQiOiJ1c2VyIiwidHlwZSI6InJlZnJlc2hUb2tlbiIsImNJZCI6IjYyYTA5ZmM3MDJmODZjZTM3YTkzODZmMSIsImp0aSI6ImRoUXhxM2ZyV1V0QktOZUhsd1o3cCIsInNnbiI6ImI4MTEwZjhmYjYiLCJpYXQiOjE2NTY1Mzg4NjQsImV4cCI6MTY1ODM1MzI2NH0.INhr4aj0cY-l-CbyFL0KkV4nz-2-vmRMpdVB2MWTg2o; trClId=LhAdDHgbA5gqFpklo8rw'
+```
+
+В результате выполнения запроса пользователю будет предоставлен доступ к пространству.
+
+По одному инвайту можно пригласить только одного пользователя. После того, как инвайт будет активирован, он становится недействительным.
+
+### Предоставление прав доступа к комнате
+
+Для предоставления доступа к комнате используется метод `grantRole`. В строке запроса передается идентификатор пространства и комнаты в нем, а в теле запроса идентификатор пользователя и его роль:
+* **role_room_user** - пользователь,
+* **role_room_moderator** - модератор.
+
+Полная спецификация метода приведена [в Swagger](https://moodhood-api.livedigital.space/doc/#/RoomRoles/grantRoleToUserAtRoom).
+
+В результате выполнения запроса пользователю задается роль для указанной комнаты.
+
+Пример выполнения запроса `grantRole`
+
+**POST  https://moodhood-api.livedigital.space/v1/spaces/60d55c0eb9ef88ab17b0aabb/rooms/60d55c0eb9ef88ab17b0aabb/roles**
+
+где *60d55c0eb9ef88ab17b0aabb* - идентификатор пространства, *60d55c0eb9ef88ab17b0aabb* - идентификатор комнаты.
+
+```{code-block} json 
+{
+  "targetUserId": "60d55c0eb9ef88ab17b0aabb",
+  "role": "role_room_user"
+}
+```
+
+Пример кода для cURL
+
+```{code-block}
+curl --location --request POST 'https://moodhood-api.livedigital.space/v1/spaces/62bcc725721aeb718445daf7/rooms/62bcc7341f211e444300da37/roles' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MmFiNWE4NGIwY2U2ZWUzMWIwOTk3YjMiLCJhdWQiOiJ1c2VyIiwidHlwZSI6ImFjY2Vzc1Rva2VuIiwiY0lkIjoiNjJhMDlmYzcwMmY4NmNlMzdhOTM4NmYxIiwianRpIjoic2YxOHFtdkV4Ymdzc2pNV0hRNWVyIiwic2duIjoiYjgxMTBmOGZiNiIsImlhdCI6MTY1NjUzODg2NCwiZXhwIjoxNjU3MTQzNjY0fQ.bNopnFmGc7bEX8Jy8GkcojCA1SGy1wm7xIhFbO9kzVY' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MmFiNWE4NGIwY2U2ZWUzMWIwOTk3YjMiLCJhdWQiOiJ1c2VyIiwidHlwZSI6InJlZnJlc2hUb2tlbiIsImNJZCI6IjYyYTA5ZmM3MDJmODZjZTM3YTkzODZmMSIsImp0aSI6ImRoUXhxM2ZyV1V0QktOZUhsd1o3cCIsInNnbiI6ImI4MTEwZjhmYjYiLCJpYXQiOjE2NTY1Mzg4NjQsImV4cCI6MTY1ODM1MzI2NH0.INhr4aj0cY-l-CbyFL0KkV4nz-2-vmRMpdVB2MWTg2o; trClId=LhAdDHgbA5gqFpklo8rw' \
+--data-raw ' {
+ "targetUserId": "60d55c0eb9ef88ab17b0aabb",
+ "role": "role_room_user"
+}'
+```
+
+В результате выполнения запроса пользователю назначаются права доступа к комнате в соответстви с заданной ролью и сервер возвращает код ответа 200.

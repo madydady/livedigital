@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Добавление комнаты на сайт c помощью iFrame &#8212; Документация livedigital </title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="prev" title="Управление пользователями" href="users.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="ru">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image">
+    <img src="_static/logo.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+    <p class="title logo__title"><h1>Руководство по быстрому старту</h2></p>
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items">
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Введение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auth.html">Авторизация</a></li>
+<li class="toctree-l1"><a class="reference internal" href="space_room_create.html">Создание space и room</a></li>
+<li class="toctree-l1"><a class="reference internal" href="space_room_config.html">Конфигурирование настроек space, room</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Управление пользователями</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Добавление комнаты на сайт c помощью iFrame</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+
+<nav id="bd-toc-nav">
+    
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <div class="section" id="c-iframe">
+<h1>Добавление комнаты на сайт c помощью iFrame<a class="headerlink" href="#c-iframe" title="Permalink to this heading">#</a></h1>
+<p>Для добавления на сайт комнаты с трансляцией следует вставить в код страницы элемент <code class="docutils literal notranslate"><span class="pre">iFrame</span></code> с нужными атрибутами.</p>
+<p><strong>Примечание</strong>. Для сайта должна быть настроена работа по протоколу HTTPS.</p>
+<p>Пример страницы с кодом iFrame:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+ <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>LiveDigital<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+ <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+ <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Пример вставки фрейма LiveDigital<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">iframe</span>
+    <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://edu.livedigital.space/room/&lt;room_id&gt;?</span>
+<span class="s">    participantName=IvanIvanov&amp;refreshToken=someTokenHere&quot;</span>
+    <span class="na">id</span><span class="o">=</span><span class="s">&quot;userplayer&quot;</span>
+    <span class="na">frameborder</span><span class="o">=</span><span class="s">&quot;0&quot;</span>
+    <span class="na">width</span><span class="o">=</span><span class="s">&quot;880px&quot;</span>
+    <span class="na">height</span><span class="o">=</span><span class="s">&quot;595px&quot;</span>
+    <span class="na">allow</span><span class="o">=</span><span class="s">&quot;camera;microphone;fullscreen;accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;&quot;</span> <span class="na">allowusermedia</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>  
+ <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Элемент <code class="docutils literal notranslate"><span class="pre">iFrame</span></code> имеет следующие атрибуты:</p>
+<ul class="simple">
+<li><p><strong>src</strong> - URL для доступа в комнату, где указывается id или alias созданной комнаты (см. <a class="reference internal" href="space_room_create.html#room-create"><span class="std std-ref">Создание комнат</span></a>). Также в качестве параметров здесь после символа “?” можно указать имя пользователя (<code class="docutils literal notranslate"><span class="pre">participantName</span></code>) и его refresh_token (<code class="docutils literal notranslate"><span class="pre">refreshToken</span></code>) для фоновой авторизации в комнате.</p></li>
+<li><p><strong>id</strong> - устаревший атрибут для iFrame, оставленный для совместимости с ранними версиями браузеров, значение может быть любым.</p></li>
+<li><p><strong>frameborder</strong> - ширина рамки вокруг фрейма (следует оставить 0 ).</p></li>
+<li><p><strong>width/height</strong> - ширина/высота для отображения фрейма на странице.</p></li>
+<li><p><strong>allow</strong> - список разрешений для комнаты, где через знак “;” перечисляются какие возможности будут разрешены для комнаты. Так, в примере кода выше указаны следующие возможности:</p>
+<ul>
+<li><p><em>camera</em> - разрешено использование камеры;</p></li>
+<li><p><em>microphone</em> - разрешено использование микрофона;</p></li>
+<li><p><em>fullscreen</em> - разрешено отображение во весь экран;</p></li>
+<li><p><em>accelerometer</em> - разрешено использование акселерометра (на мобильных устройствах);</p></li>
+<li><p><em>autoplay</em> - разрешено автоматическое проигрывание;</p></li>
+<li><p><em>clipboard-write</em> - разрешено копирование в буфер обмена;</p></li>
+<li><p><em>encrypted-media</em> - разрешено использование так называемого <em>Encrypted Media Extension API</em>, который позволяет управлять проигрыванием медиа контента на странице;</p></li>
+<li><p><em>gyroscope</em> - разрешено использование гироскопа;</p></li>
+<li><p><em>picture-in-picture</em> - разрешена использование режима “картинка-в-картинке”;</p></li>
+<li><p><em>allowusermedia</em> - отдельно указанное разрешение, указывающее на то, что использование камеры и микрофона пользователем разрешено.</p></li>
+</ul>
+</li>
+</ul>
+<p>Если для атрибута <code class="docutils literal notranslate"><span class="pre">allow</span></code> для какого-то разрешения добавить ключевое слово <code class="docutils literal notranslate"><span class="pre">none</span></code>, то это означает запрет на использование. Например, <em>allow = camera `none`</em> означает, что использование камеры будет запрещено.</p>
+</div>
+
+
+              </article>
+              
+
+              
+              <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="users.html" title="назад страница">
+      <i class="fas fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">назад</p>
+          <p class="prev-next-title">Управление пользователями</p>
+      </div>
+  </a>
+</div>
+              </footer>
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2022, livedigital.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Создано с помощью <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

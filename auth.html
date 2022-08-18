@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Авторизация &#8212; Документация livedigital </title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Создание space и room" href="space_room_create.html" />
+    <link rel="prev" title="Введение" href="intro.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="ru">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image">
+    <img src="_static/logo.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+    <p class="title logo__title"><h1>Руководство по быстрому старту</h2></p>
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items">
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Введение</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Авторизация</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#client-token">Создание клиентского токена</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Использование токена</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#user-token">Создание токена пользователя</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="space_room_create.html">Создание space и room</a></li>
+<li class="toctree-l1"><a class="reference internal" href="space_room_config.html">Конфигурирование настроек space, room</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Управление пользователями</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iframe.html">Добавление комнаты на сайт c помощью iFrame</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#client-token">
+   Создание клиентского токена
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   Использование токена
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#user-token">
+   Создание токена пользователя
+  </a>
+ </li>
+</ul>
+
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <div class="section" id="id1">
+<h1>Авторизация<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<p>Для работы с API LiveDigital необходима авторизация. Авторизация осуществляется с помощью специального токена доступа <code class="docutils literal notranslate"><span class="pre">access_token</span></code>. Предусмотрены разные типы допуска и разные токены для выполнения различных операций. Сначала необходимо сформировать клиентский токен, который позволяет просматривать публичные сущности, например, комнаты, а также создать пользовательский токен, который можно использовать для создания новых сущностей.</p>
+<p>Прежде всего необходимо запросить у разработчика свой идентификатор клиента <code class="docutils literal notranslate"><span class="pre">clientID</span></code> и секретный ключ <code class="docutils literal notranslate"><span class="pre">client_secret</span></code>, на основе которых формируется клиентский токен.</p>
+<p>Пример <code class="docutils literal notranslate"><span class="pre">clientID</span></code>, <code class="docutils literal notranslate"><span class="pre">client_secret</span></code>, полученных от разработчика:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{
+ “clientId” : “john-smith-livedigital”,
+ “clientSecret” : “VTytkTR7ZHH5nLhoWCLjymrUJjKBzfs4”
+}
+</pre></div>
+</div>
+<p>Используя полученный идентификатор клиента и секрет необходимо создать клиентский токен.</p>
+<div class="section" id="client-token">
+<span id="id2"></span><h2>Создание клиентского токена<a class="headerlink" href="#client-token" title="Permalink to this heading">#</a></h2>
+<p>Для получения клиентского токена следует выполнить запрос <code class="docutils literal notranslate"><span class="pre">getAccessToken</span></code>, передав в параметрах запроса свои <code class="docutils literal notranslate"><span class="pre">clientId</span></code> и <code class="docutils literal notranslate"><span class="pre">client_secret</span></code>, полученные ранее. Также в теле запроса передается параметр <code class="docutils literal notranslate"><span class="pre">grant_type</span></code> со значением <code class="docutils literal notranslate"><span class="pre">client_credentials</span></code>. Полная спецификация метода приведена <a class="reference external" href="https://moodhood-api.livedigital.space/doc/#/Auth/getAccessToken">в Swagger</a>.</p>
+<p>Пример выполнения запроса <code class="docutils literal notranslate"><span class="pre">getAccessToken</span></code></p>
+<p><strong>POST https://moodhood-api.livedigital.space/v1/auth/token</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+ <span class="nt">&quot;client_id&quot;</span><span class="p">:</span> <span class="s2">&quot;john-smith-livedigital&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;client_secret&quot;</span><span class="p">:</span> <span class="s2">&quot;VTytkTR7ZHH5nLhoWCLjymrUJjKBzfs4&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;grant_type&quot;</span><span class="p">:</span> <span class="s2">&quot;client_credentials&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Результат:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;token_type&quot;</span><span class="p">:</span> <span class="s2">&quot;Bearer&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;access_token&quot;</span><span class="p">:</span> <span class="s2">&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGM4YzZmMGE2MGY1Yzc0OGQxZWYyN2UiLCJhdWQiOiJ1c2VyIiwidHlwZSI6ImFjY2Vzc1Rva2VuIiwiY0lkIjoiNjBjOGM2ZjBhNjBmNWM3NDhkMWVmMjdlIiwianRpIjoiNzlhZjgwMDM4YTdmNSIsInNnbiI6IjA5OGY2YmNkNDYiLCJpYXQiOjE2MjM4NDU0MTIsImV4cCI6MTYyNDQ1MDIxMn0.jfzFAs_XM&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;refresh_token&quot;</span><span class="p">:</span> <span class="s2">&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGM4YzZmMGE2MGY1Yzc0OGQxZWYyN2UiLCJhdWQiOiJ1c2VyIiwidHlwZSI6InJlZnJlc2hUb2tlbiIsImNJZCI6IjYwYzhjNmYwYTYwZjVjNzQ4ZDFlZjI3ZSIsImp0aSI6IjU0ZjM4NDQxZmU1MmQiLCJzZ24iOiIwOThmNmJjZDQ2IiwiaWF0IjoxNjIzODQ1NDEyLCJleHAiOjE2MjY0Mzc0MTJ9.Gj8fLaDAX4&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>В теле ответа возвращается параметр <code class="docutils literal notranslate"><span class="pre">access_token</span></code>, который содержит значение клиентского токена.</p>
+</div>
+<div class="section" id="id3">
+<h2>Использование токена<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>Токен используется при выполнении запросов. Для этого необходимо в заголовки запроса добавить заголовок следующего вида:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Authorization</span><span class="p">:</span> <span class="n">Bearer</span> <span class="o">&lt;</span><span class="n">access_token</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Здесь <code class="docutils literal notranslate"><span class="pre">Bearer</span></code> - это тип используемой авторизации.</p>
+<p>Пример кода для cURL с передачей токена в заголовке Authorization:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">location</span> <span class="o">--</span><span class="n">request</span> <span class="n">POST</span> <span class="s1">&#39;https://moodhood-api.livedigital.space/v1/auth/token&#39;</span> \
+<span class="o">--</span><span class="n">header</span> <span class="s1">&#39;Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MmFiNWE4NGIwY2U2ZWUzMWIwOTk3YjMiLCJhdWQiOiJ1c2VyIiwidHlwZSI6ImFjY2Vzc1Rva2VuIiwiY0lkIjoiNjJhMDlmYzcwMmY4NmNlMzdhOTM4NmYxIiwianRpIjoiSzZEX1ZNQWRrc25CQnpjaTJnRlFBIiwic2duIjoiYjgxMTBmOGZiNiIsImlhdCI6MTY1NTc0MTEyOSwiZXhwIjoxNjU2MzQ1OTI5fQ.Qy-zwBGwjyWzPF8uXYtla9IOvCfOCeQ9uzCaUo8Q7pM&#39;</span> \
+<span class="o">--</span><span class="n">header</span> <span class="s1">&#39;Content-Type: application/json&#39;</span> \
+<span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="n">raw</span> <span class="s1">&#39;{</span>
+<span class="s2">&quot;client_id&quot;</span><span class="p">:</span> <span class="s2">&quot;john-smith-livedigital&quot;</span><span class="p">,</span>
+<span class="s2">&quot;client_secret&quot;</span><span class="p">:</span> <span class="s2">&quot;VTytkTR7ZHH5nLhoWCLjymrUJjKBzfs4&quot;</span><span class="p">,</span>
+<span class="s2">&quot;grant_type&quot;</span><span class="p">:</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span>
+<span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;test_user@test.test&quot;</span><span class="p">,</span>
+<span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;123456&quot;</span>
+<span class="p">}</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="user-token">
+<span id="id4"></span><h2>Создание токена пользователя<a class="headerlink" href="#user-token" title="Permalink to this heading">#</a></h2>
+<p>Для получения токена пользователя следует выполнить запрос <code class="docutils literal notranslate"><span class="pre">getAccessToken</span></code>, авторизовавшись с помощью клиентского токена и передав в параметрах запроса свои <code class="docutils literal notranslate"><span class="pre">clientId</span></code> и <code class="docutils literal notranslate"><span class="pre">client_secret</span></code>, полученные ранее.
+Также в теле запроса передаются параметры:</p>
+<ul class="simple">
+<li><p><strong>grant_type</strong> - тип доступа (следует указать <code class="docutils literal notranslate"><span class="pre">password</span></code>)</p></li>
+<li><p><strong>username</strong> - имя пользователя</p></li>
+<li><p><strong>password</strong> - пароль пользователя</p></li>
+</ul>
+<p>Полная спецификация метода приведена <a class="reference external" href="https://moodhood-api.livedigital.space/doc/#/Auth/getAccessToken">в Swagger</a>.</p>
+<p>Пример выполнения запроса <code class="docutils literal notranslate"><span class="pre">getAccessToken</span></code></p>
+<p><strong>POST  https://moodhood-api.livedigital.space/v1/auth/token</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+ <span class="nt">&quot;client_id&quot;</span><span class="p">:</span> <span class="s2">&quot;john-smith-livedigital&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;client_secret&quot;</span><span class="p">:</span> <span class="s2">&quot;VTytkTR7ZHH5nLhoWCLjymrUJjKBzfs4&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;grant_type&quot;</span><span class="p">:</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;test_user@test.test&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;123456&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Пример кода для cURL с передачей клиентского токена в заголовке Authorization:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">location</span> <span class="o">--</span><span class="n">request</span> <span class="n">POST</span> <span class="s1">&#39;https://moodhood-api.livedigital.space/v1/auth/token&#39;</span> \
+<span class="o">--</span><span class="n">header</span> <span class="s1">&#39;Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MmFiNWE4NGIwY2U2ZWUzMWIwOTk3YjMiLCJhdWQiOiJ1c2VyIiwidHlwZSI6ImFjY2Vzc1Rva2VuIiwiY0lkIjoiNjJhMDlmYzcwMmY4NmNlMzdhOTM4NmYxIiwianRpIjoiSzZEX1ZNQWRrc25CQnpjaTJnRlFBIiwic2duIjoiYjgxMTBmOGZiNiIsImlhdCI6MTY1NTc0MTEyOSwiZXhwIjoxNjU2MzQ1OTI5fQ.Qy-zwBGwjyWzPF8uXYtla9IOvCfOCeQ9uzCaUo8Q7pM&#39;</span> \
+<span class="o">--</span><span class="n">header</span> <span class="s1">&#39;Content-Type: application/json&#39;</span> \
+<span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="n">raw</span> <span class="s1">&#39;{</span>
+<span class="s2">&quot;client_id&quot;</span><span class="p">:</span> <span class="s2">&quot;john-smith-livedigital&quot;</span><span class="p">,</span>
+<span class="s2">&quot;client_secret&quot;</span><span class="p">:</span> <span class="s2">&quot;VTytkTR7ZHH5nLhoWCLjymrUJjKBzfs4&quot;</span><span class="p">,</span>
+<span class="s2">&quot;grant_type&quot;</span><span class="p">:</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span>
+<span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;test_user@test.test&quot;</span><span class="p">,</span>
+<span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;123456&quot;</span>
+<span class="p">}</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+<p>Результат:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="nt">&quot;access_token&quot;</span><span class="p">:</span> <span class="s2">&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MmEwOWZjNzAyZjg2Y2UzN2E5Mzg2ZjEiLCJhdWQiOiJjbGllbnQiLCJ0eXBlIjoiYWNjZXNzVG9rZW4iLCJjSWQiOiI2MmEwOWZjNzAyZjg2Y2UzN2E5Mzg2ZjEiLCJqdGkiOiI1ZGxDZ0pxRzZ1dFFycjNqSTFjSmMiLCJpYXQiOjE2NTUzMTYwNjgsImV4cCI6MTY1NTkyMDg2OH0.5vTOaqS77Yl-4cYT1WM5DdKbo8-I__bxB2DX5kyFaTA&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;token_type&quot;</span><span class="p">:</span> <span class="s2">&quot;Bearer&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;refresh_token&quot;</span><span class="p">:</span> <span class="s2">&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MmEwOWZjNzAyZjg2Y2UzN2E5Mzg2ZjEiLCJhdWQiOiJjbGllbnQiLCJ0eXBlIjoicmVmcmVzaFRva2VuIiwiY0lkIjoiNjJhMDlmYzcwMmY4NmNlMzdhOTM4NmYxIiwianRpIjoiYXNhZnJfOUJpM1diUnZlTXFYVFhUIiwiaWF0IjoxNjU1MzE2MDY4LCJleHAiOjE2NTcxMzA0Njh9.tjZrOlt35FliWSNPlWX-piFfIyiYAym72h2Yk-eAsxQ&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>В результате выполнения запроса возвращается JSON, содержащий значение <code class="docutils literal notranslate"><span class="pre">access_token</span></code> - это и есть токен пользователя для авторизации. Также метод возвращает значение <code class="docutils literal notranslate"><span class="pre">refresh_token</span></code> - это токен, который может использоваться для фоновой авторизации пользователя (подробнее см. <a class="reference internal" href="iframe.html"><span class="doc std std-doc">Добавление комнаты на сайт c помощью iFrame</span></a>).</p>
+</div>
+</div>
+
+
+              </article>
+              
+
+              
+              <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="intro.html" title="назад страница">
+      <i class="fas fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">назад</p>
+          <p class="prev-next-title">Введение</p>
+      </div>
+  </a>
+  <a class='right-next' id="next-link" href="space_room_create.html" title="вперёд страница">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">вперёд</p>
+      <p class="prev-next-title">Создание space и room</p>
+  </div>
+  <i class="fas fa-angle-right"></i>
+  </a>
+</div>
+              </footer>
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2022, livedigital.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Создано с помощью <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>
